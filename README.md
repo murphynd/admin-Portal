@@ -11,3 +11,5 @@
 - [formik](https://formik.org/docs/overview)- Formik is the world's most popular open source form library for React and React Native.
 - react
 - [yup](https://github.com/jquense/yup) - Yup is a schema builder for runtime value parsing and validation. Define a schema, transform a value to match, assert the shape of an existing value, or both. Yup schema are extremely expressive and allow modeling complex, interdependent validations, or value transformation.
+
+Firebase login and signup - helpful [video](https://www.youtube.com/watch?v=unr4s3jd9qA)
