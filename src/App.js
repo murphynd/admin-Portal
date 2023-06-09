@@ -5,13 +5,12 @@ import Dashboard from "./scenes/dashboard";
 import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
-import Login from "./scenes/login";
-import SignUp from "./scenes/signup";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Sidebar from "./scenes/global/Sidebar";
-
-//import Calendar from "./scenes/calendar/calendar";
+import PrivateRoute from "./PrivateRoute";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -26,11 +25,15 @@ function App() {
           <main className='content'>
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
-              <Route path='/' element={<Dashboard />} />
-              <Route path='/team' element={<Team />} />
-              <Route path='/contacts' element={<Contacts />} />
-              <Route path='/invoices' element={<Invoices />} />
-              <Route path='/team' element={<Team />} />
+              <Route exact path='/' element={<PrivateRoute />}>
+                <Route path='/' element={<Dashboard />} />
+                <Route path='/team' element={<Team />} />
+                <Route path='/contacts' element={<Contacts />} />
+                <Route path='/invoices' element={<Invoices />} />
+                <Route path='/team' element={<Team />} />
+              </Route>
+              <Route path='/signup' element={<Signup />} />
+              <Route path='/login' element={<Login />} />
             </Routes>
           </main>
         </div>
