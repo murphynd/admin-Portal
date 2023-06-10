@@ -11,17 +11,20 @@ import Sidebar from "./scenes/global/Sidebar";
 import PrivateRoute from "./PrivateRoute";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import { useAuth } from "./AuthContext";
 
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
+  const auth = useAuth();
+  const { currentUser } = auth;
 
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className='app'>
-          <Sidebar isSidebar={isSidebar} />
+          {currentUser && <Sidebar isSidebar={isSidebar} />}
           <main className='content'>
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>

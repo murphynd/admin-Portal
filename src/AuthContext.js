@@ -20,7 +20,15 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
-    return auth.signOut();
+    console.log("logout in context");
+    return auth
+      .signOut()
+      .then(function () {
+        console.log("Sign-out successful.");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   function resetPassword(email) {

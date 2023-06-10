@@ -8,13 +8,20 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
+import { useAuth } from "../../AuthContext";
 
 const Topbar = () => {
   const theme = useTheme();
   const colors = tokens([theme.palette.mode]);
   const colorMode = useContext(ColorModeContext);
+  const { logout } = useAuth();
   console.log("mode", theme.palette.mode);
   console.log("consolelog", colors.primary[400]);
+
+  function handleLogout() {
+    console.log("logout");
+    logout();
+  }
 
   //Box component is used as a wrapper to style the content inside it
   return (
@@ -44,7 +51,7 @@ const Topbar = () => {
         <IconButton>
           <SettingsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={handleLogout}>
           <PersonOutlinedIcon />
         </IconButton>
       </Box>
